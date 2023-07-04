@@ -36,6 +36,8 @@ async def get_all_charity_projects(
     '/',
     response_model=CharityProjectDB,
     response_model_exclude_none=True,
+    # Если передавать Depends кортежом, то выходит ошибка:
+    # 'Depends' object is not iterable
     dependencies=[Depends(current_superuser)],
 )
 async def create_new_charity_project(
